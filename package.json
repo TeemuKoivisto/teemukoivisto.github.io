@@ -1,0 +1,40 @@
+{
+  "type": "module",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TeemuKoivisto/teemukoivisto.github.io.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TeemuKoivisto/teemukoivisto.github.io/issues"
+  },
+  "homepage": "https://github.com/TeemuKoivisto/teemukoivisto.github.io#readme",
+  "scripts": {
+    "format": "prettier --write \"*.+(js|json|yml|yaml|ts|md|graphql|mdx)\" .",
+    "lint:fix": "eslint --ignore-path .gitignore --fix --ext .js,.cjs,.ts,.tsx .",
+    "api": "concurrently --kill-others 'pnpm --filter @teemukoivisto.github.io/api watch' 'pnpm --filter @teemukoivisto.github.io/api dev'",
+    "client": "concurrently --kill-others 'pnpm --filter @teemukoivisto.github.io/client dev'",
+    "utils": "concurrently --kill-others 'pnpm --filter @teemukoivisto.github.io/types watch'",
+    "start": "concurrently --kill-others 'pnpm utils' 'pnpm api' 'pnpm sync' 'pnpm client'"
+  },
+  "engines": {
+    "node": ">=16",
+    "pnpm": "^7.0.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.25.0",
+    "@typescript-eslint/parser": "^5.25.0",
+    "concurrently": "^6.5.1",
+    "eslint": "^8.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-svelte3": "^4.0.0",
+    "prettier": "^2.6.2",
+    "prettier-plugin-svelte": "^2.7.0"
+  }
+}
